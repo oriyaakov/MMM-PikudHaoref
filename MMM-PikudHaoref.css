@@ -1,0 +1,166 @@
+/* MMM-PikudHaoref - Dark Map Style */
+
+.pikud-haoref-wrapper {
+	position: relative;
+	border-radius: 12px;
+	overflow: hidden;
+	transition: all 0.5s ease;
+	border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.pikud-haoref-wrapper.alert-active {
+	border: 2px solid #ff3333;
+	box-shadow: 0 0 30px rgba(255, 0, 0, 0.5), 0 0 60px rgba(255, 0, 0, 0.2);
+	animation: borderPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes borderPulse {
+	0%, 100% {
+		border-color: #ff3333;
+		box-shadow: 0 0 30px rgba(255, 0, 0, 0.5), 0 0 60px rgba(255, 0, 0, 0.2);
+	}
+	50% {
+		border-color: #ff6666;
+		box-shadow: 0 0 50px rgba(255, 0, 0, 0.8), 0 0 100px rgba(255, 0, 0, 0.4);
+	}
+}
+
+/* Map */
+.pikud-map {
+	border-radius: 10px;
+	z-index: 1;
+}
+
+/* Leaflet overrides for dark theme */
+.pikud-map .leaflet-container {
+	background: #1a1a2e;
+}
+
+/* Alert overlay - above the map */
+.pikud-overlay {
+	background: linear-gradient(to bottom, rgba(180, 0, 0, 0.92) 0%, rgba(120, 0, 0, 0.75) 70%, rgba(80, 0, 0, 0.5) 100%);
+	padding: 12px 15px;
+	direction: rtl;
+	text-align: center;
+	transition: all 0.3s ease;
+	border-radius: 10px 10px 0 0;
+}
+
+.pikud-overlay.hidden {
+	display: none;
+}
+
+/* Overlay header */
+.overlay-header {
+	font-size: 1.6em;
+	font-weight: bold;
+	color: #ffffff;
+	text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+	animation: headerFlash 0.8s ease-in-out infinite;
+	margin-bottom: 4px;
+}
+
+@keyframes headerFlash {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0.75; }
+}
+
+.overlay-type {
+	font-size: 0.95em;
+	color: #ffcccc;
+	margin-bottom: 6px;
+}
+
+/* Countdown */
+.overlay-countdown {
+	display: flex;
+	align-items: baseline;
+	justify-content: center;
+	gap: 8px;
+}
+
+.overlay-countdown-num {
+	font-size: 2.8em;
+	font-weight: bold;
+	color: #ffffff;
+	text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+	line-height: 1;
+	animation: countPulse 1s ease-in-out infinite;
+}
+
+@keyframes countPulse {
+	0%, 100% { transform: scale(1); }
+	50% { transform: scale(1.08); }
+}
+
+.overlay-countdown-label {
+	font-size: 0.95em;
+	color: #ffcccc;
+}
+
+.overlay-shelter {
+	font-size: 1.1em;
+	color: #ffdd44;
+	font-weight: bold;
+	animation: headerFlash 1.5s ease-in-out infinite;
+}
+
+/* Pulsing alert markers on map */
+.alert-marker-icon {
+	background: none;
+	border: none;
+}
+
+.alert-marker-dot {
+	width: 12px;
+	height: 12px;
+	background: #ff2222;
+	border-radius: 50%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	box-shadow: 0 0 6px rgba(255, 0, 0, 0.9);
+	z-index: 2;
+}
+
+.alert-marker-pulse {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background: rgba(255, 0, 0, 0.35);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	animation: markerPulse 1.5s ease-out infinite;
+	z-index: 1;
+}
+
+@keyframes markerPulse {
+	0% {
+		transform: translate(-50%, -50%) scale(0.5);
+		opacity: 1;
+	}
+	100% {
+		transform: translate(-50%, -50%) scale(2.5);
+		opacity: 0;
+	}
+}
+
+/* City tooltips on map */
+.alert-city-tooltip {
+	background: rgba(180, 0, 0, 0.85) !important;
+	color: #ffffff !important;
+	border: 1px solid #ff4444 !important;
+	border-radius: 6px !important;
+	font-size: 12px !important;
+	font-weight: bold !important;
+	padding: 3px 8px !important;
+	direction: rtl !important;
+	box-shadow: 0 0 10px rgba(255, 0, 0, 0.5) !important;
+}
+
+.alert-city-tooltip::before {
+	border-top-color: rgba(180, 0, 0, 0.85) !important;
+}
